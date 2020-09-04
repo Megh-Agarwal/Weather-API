@@ -1,7 +1,12 @@
 const express = require('express');
 const geoCoding = require('./util/geocode.js');
-
+const port = process.env.PORT || 5000
 const app = express();
+
+app.get('/', (req,res) => {
+    res.send("Request weather route :)")
+})
+
 
 app.get('/weather', (req,res) => {
     if(!req.query.address){
@@ -19,6 +24,6 @@ app.get('/weather', (req,res) => {
     }
 })
 
-app.listen('5000', () => {
+app.listen(port, () => {
 	console.log("The server is listening on port 5000")
 })
